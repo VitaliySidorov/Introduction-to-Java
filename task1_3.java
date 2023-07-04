@@ -32,7 +32,8 @@ public class task1_3 {
                     System.out.printf("%d * %d = %d\n", n, m, n * m);
                     break;
                 case '/':
-                    if (n % m == 0) System.out.printf("%d / %d = %d\n", n, m, n / m);
+                    if (m == 0) System.out.println("Ошибка! Делить на 0 нельзя!");
+                    else if (n % m == 0) System.out.printf("%d / %d = %d\n", n, m, n / m);
                     else {
                         System.out.printf("%d / %d = %s\n", n, m, (float) n / m);
                     }
