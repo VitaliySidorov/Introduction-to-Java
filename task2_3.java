@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 
 public class task2_3 {
 
-    public static String readFile(String fileName) throws Exception
+    public static String readFile(String fileName) throws Exception // Загрука данных из файла
     {
         String data = "";
         data = new String(
@@ -25,7 +25,7 @@ public class task2_3 {
     public static void main(String[] args) throws Exception {
         StringBuilder sb = new StringBuilder();
         String data = readFile("json.txt");
-        String newData = data.replaceAll("\\{", "")
+        String newData = data.replaceAll("\\{", "") // удаление символов из строк
                 .replaceAll("\\}", "")
                 .replaceAll("\"", "")
                 .replaceAll("\\\\", "")
@@ -35,7 +35,7 @@ public class task2_3 {
         for (String part : parts) {
             String[] params = part.split(":");
             if ("фамилия".equals(params[0].trim())) {
-                sb = new StringBuilder("Студент ").append(params[1]);
+                sb = new StringBuilder("Студент ").append(params[1]); // парсинг строк и сборка строки вывода
             } 
             else if ("оценка".equals(params[0].trim())){
                 sb.append(" получил ").append(params[1]);

@@ -12,11 +12,11 @@ public class task2_2 {
 
     private static FileWriter writer;
 
-    public static void logStep(String s) throws IOException {
+    public static void logStep(String s) throws IOException { // метод записи строки лог-файла
         writer.write(new Timestamp(System.currentTimeMillis()) + "\t" + s + "\n");
     }
 
-    public static void bubbleSort(int[] array) {
+    public static void bubbleSort(int[] array) { // пузырьковая сортировка
         try {
             Integer count = 0, swap = 0;
             for (int i = 0; i < array.length - 1; i++) {

@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 public class task2_1 {
     public static final String request = "SELECT * FROM students WHERE ";
 
-    public static String readFile(String fileName) throws Exception
+    public static String readFile(String fileName) throws Exception // Загрука данных из файла
     {
         String data = "";
         data = new String(
