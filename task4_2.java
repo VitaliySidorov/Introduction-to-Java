@@ -1,5 +1,6 @@
 // Даны два Deque, представляющие два целых числа. 
 // Цифры хранятся в обратном порядке и каждый из их узлов содержит одну цифру.
+// 1) Умножьте два числа и верните произведение в виде связанного списка.
 // 2) Сложите два числа и верните сумму в виде связанного списка. 
 // Одно или два числа должны быть отрицательными.
 
@@ -49,7 +50,62 @@ public class task4_1 {
 
         System.out.println("Сумма: " + sum(d1, d2));
 
+        // System.out.println("Произведение: " + mult(d1, d2));
+
     }
+
+    // public static Deque<Integer> mult(Deque<Integer> d1, Deque<Integer> d2) {
+    //     Deque<Integer> result = new ArrayDeque<>();
+    //     int carry = 0, mult = 1, digit=0;
+    //     for (int i = 0; i < d2.size(); i++) {
+    //         digit = (int) Math.pow(10, i);
+    //         mult *= d1.removeFirst() * digit;
+    //         System.out.println(mult);
+            
+    //         for (int j = 0; j < d1.size(); j++) {
+    //             digit = (int) Math.pow(10, j);
+    //             mult *= d2.removeFirst() * digit;
+    //             System.out.println(mult);
+    //             result.addLast((mult % 10) + carry);
+    //             System.out.println(result);
+    //             carry = mult / 10;
+    //         }
+            
+            
+    //         result.addLast(mult);
+    //     }
+    //     if (carry != 0) {
+    //         result.addLast(carry);
+    //     }
+    
+    // // int carry = 0;
+    // // while (!d1.isEmpty() && !d2.isEmpty()) {
+    // // int mult = 1;
+    // // if (!d1.isEmpty()) {
+    // // int digit1 = 1;
+    // // mult *= d1.removeFirst() * digit1;
+    // // System.out.println(mult);
+    // // digit1 *=10;
+    // // }
+    // // if (!d2.isEmpty()) {
+    // // int digit2 = 1;
+    // // mult *= d2.removeFirst() * digit2;
+    // // System.out.println(mult);
+    // // digit2 *=10;
+    // // }
+    // // result.addLast(mult);
+    // // // result.addLast((mult % 10) + carry);
+    // // System.out.println(result);
+    // // // carry = mult / 10;
+    // // System.out.println(carry);
+    // // }
+    // // if (carry != 0) {
+    // // result.addLast(carry);
+    // // }
+    // return result;
+
+    // }
+
 
     public static Deque<Integer> sum(Deque<Integer> d1, Deque<Integer> d2) { // Сложение числе в списке
         Deque<Integer> result = new ArrayDeque<>();
