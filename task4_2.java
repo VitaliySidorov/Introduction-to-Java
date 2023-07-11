@@ -92,7 +92,7 @@ public class task4_2 {
         }
         
         while (i >= 0) {
-            result.addLast(intermediateResults[i]);
+            result.addFirst(intermediateResults[i]);
             i--;
         }
         return result;
