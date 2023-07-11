@@ -5,7 +5,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class task4_1 {
+public class task4_2 {
 
     static Scanner iScanner = new Scanner(System.in);
 
@@ -42,86 +42,65 @@ public class task4_1 {
         System.out.println("Первое число: " + Arrays.toString(d1.toArray()));
         System.out.println("Второе число: " + Arrays.toString(d2.toArray()));
 
-        System.out.println("Сумма: " + sum(d1, d2));
-
-        // System.out.println("Произведение: " + mult(d1, d2));
+        System.out.println("Произведение: " + mult(d1, d2));
 
     }
 
-    // public static Deque<Integer> mult(Deque<Integer> d1, Deque<Integer> d2) {
-    //     Deque<Integer> result = new ArrayDeque<>();
-    //     int carry = 0, mult = 1, digit=0;
-    //     for (int i = 0; i < d2.size(); i++) {
-    //         digit = (int) Math.pow(10, i);
-    //         mult *= d1.removeFirst() * digit;
-    //         System.out.println(mult);
-            
-    //         for (int j = 0; j < d1.size(); j++) {
-    //             digit = (int) Math.pow(10, j);
-    //             mult *= d2.removeFirst() * digit;
-    //             System.out.println(mult);
-    //             result.addLast((mult % 10) + carry);
-    //             System.out.println(result);
-    //             carry = mult / 10;
-    //         }
-            
-            
-    //         result.addLast(mult);
-    //     }
-    //     if (carry != 0) {
-    //         result.addLast(carry);
-    //     }
-    
-    // // int carry = 0;
-    // // while (!d1.isEmpty() && !d2.isEmpty()) {
-    // // int mult = 1;
-    // // if (!d1.isEmpty()) {
-    // // int digit1 = 1;
-    // // mult *= d1.removeFirst() * digit1;
-    // // System.out.println(mult);
-    // // digit1 *=10;
-    // // }
-    // // if (!d2.isEmpty()) {
-    // // int digit2 = 1;
-    // // mult *= d2.removeFirst() * digit2;
-    // // System.out.println(mult);
-    // // digit2 *=10;
-    // // }
-    // // result.addLast(mult);
-    // // // result.addLast((mult % 10) + carry);
-    // // System.out.println(result);
-    // // // carry = mult / 10;
-    // // System.out.println(carry);
-    // // }
-    // // if (carry != 0) {
-    // // result.addLast(carry);
-    // // }
-    // return result;
-
-    // }
-
-
-    public static Deque<Integer> sum(Deque<Integer> d1, Deque<Integer> d2) { // Сложение числе в списке
+     public static Deque<Integer> mult(Deque<Integer> d1, Deque<Integer> d2) {
+        // Создаем новый связанный список для хранения результата умножения
         Deque<Integer> result = new ArrayDeque<>();
-        int carry = 0;
-        while (!d1.isEmpty() || !d2.isEmpty()) {
-            int sum = carry;
-            if (!d1.isEmpty()) {
-                sum += d1.removeFirst();
+
+        // Проверяем, является ли одно из чисел отрицательным
+        boolean isNegativeFirst, isNegativeSecond;
+        if (isNegativeFirst = (d1.getLast() < 0));
+        if (isNegativeSecond = (d2.getLast() < 0));
+
+        // Инициализируем массив для хранения промежуточных результатов умножения
+        int[] intermediateResults = new int[d1.size() + d2.size()];
+
+        // Выполняем умножение цифр
+        for (int i = 0; i < d1.size(); i++) {
+            int digit1 = Math.abs(d1.removeFirst());
+            int carry = 0;
+
+            for (int j = 0; j < d2.size(); j++) {
+                int digit2 = Math.abs(d2.removeFirst());
+                int product = digit1 * digit2 + intermediateResults[i + j] + carry;
+
+                intermediateResults[i + j] = product % 10;
+                carry = product / 10;
+                d2.addLast(digit2);
             }
-            if (!d2.isEmpty()) {
-                sum += d2.removeFirst();
+
+            if (carry > 0) {
+                intermediateResults[i + d2.size()] += carry;
             }
-            result.addLast(sum % 10);
-            carry = sum / 10;
+
+            d1.addLast(digit1);
         }
-        if (carry != 0) {
-            result.addLast(carry);
+        
+        // Удаляем ведущие нули из промежуточных результатов
+        int i = intermediateResults.length - 1;
+        while (i >= 0 && intermediateResults[i] == 0) {
+            i--;
+        }
+
+        // Формируем итоговый связанный список
+        if (isNegativeFirst ^ isNegativeSecond) {
+            result.addLast(-1);
+            
+        }
+        
+        while (i >= 0) {
+            result.addLast(intermediateResults[i]);
+            i--;
         }
         return result;
     }
+    
 
-    public static int nextNumber(int a) { // Ввод числа
+
+public static int nextNumber(int a) { // Ввод числа
         System.out.printf("Введите %d-е число: ", a);
         int number;
         if (iScanner.hasNextInt()) {
