@@ -1,3 +1,8 @@
+// Даны два Deque, представляющие два целых числа. 
+// Цифры хранятся в обратном порядке и каждый из их узлов содержит одну цифру.
+// 1) Умножьте два числа и верните произведение в виде связанного списка.
+// Одно или два числа должны быть отрицательными.
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +47,8 @@ public class task4_2 {
         System.out.println("Первое число: " + Arrays.toString(d1.toArray()));
         System.out.println("Второе число: " + Arrays.toString(d2.toArray()));
 
-        System.out.println("Произведение: " + mult(d1, d2));
+        System.out.println("Произведение (* - в случае отрицательного (-1) в начале списка): " + mult(d1, d2));
+        System.out.println("* - в случае отрицательного числа в начале списка (-1).");
 
     }
 
@@ -86,14 +92,16 @@ public class task4_2 {
         }
 
         // Формируем итоговый связанный список
-        if (isNegativeFirst ^ isNegativeSecond) {
-            result.addLast(-1);
-            
-        }
-        
+                
         while (i >= 0) {
             result.addFirst(intermediateResults[i]);
             i--;
+        }
+        
+        // Если число отрицательное добавляем -1 в начало списка
+        if (isNegativeFirst ^ isNegativeSecond) {
+            result.addFirst(-1);
+            
         }
         return result;
     }
