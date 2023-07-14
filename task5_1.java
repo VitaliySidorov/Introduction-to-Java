@@ -14,7 +14,7 @@ class PhoneBook {
         contacts = new HashMap<String, List>();
     }
 
-    public void addPhoneNumber(String name, String number) {
+    public void addPhoneNumber(String name, String number) { // Добавление нового номера телефона, если имя контакта уже существует, добавляется следующий номер
         List numbers;
         if (contacts.containsKey(name)) {
             numbers = contacts.get(name);
@@ -25,7 +25,7 @@ class PhoneBook {
         numbers.add(number);
     }
 
-    public void printAllNumbers() {
+    public void printAllNumbers() { // Вывод телефонной книги в консоль
         for (String name : contacts.keySet()) {
             System.out.print(name + ":\t");
             List numbers = contacts.get(name);
